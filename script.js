@@ -20,4 +20,14 @@ const questions = [
         option: ["K2", "Nanga Parbat", "Mount Everest", "Makalu"]
     },
 
-]
+];
+
+const main = document.getElementById("main");
+const questionContainer = document.querySelector(".question")
+
+questions.forEach(que =>{
+    const questionDiv = document.createElement("div");
+    questionDiv.className = "question"
+    questionDiv.innerText = que.question
+    questionContainer.appendChild(questionDiv)
+})
