@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +10,95 @@
     <div class="quiz-container">
         <div class="timer">Time: <span id="time">00:00</span></div>
         <div class="question-container">
-            <div class="question">Question 1</div>
+            <div class="question"></div>
             <div class="options">
-                <div class="option">Option A</div>
-                <div class="option">Option B</div>
-                <div class="option">Option C</div>
-                <div class="option">Option D</div>
+              
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            background-color: #333;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background-color: #4a90e2;
+            color: #fff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container" class="quiz-container">
+        <!-- Quiz questions will be inserted here -->
+    </div>
+
+    <script>
+        // JavaScript to dynamically insert quiz questions
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: ["Paris", "London", "Berlin", "Madrid"]
+            },
+            {
+                question: "What is the largest planet in our solar system?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"]
+            },
+            // Add more questions as needed
+        ];
+
+        const container = document.getElementById('quiz-container');
+
+        questions.forEach(q => {
+            // Create elements for each question
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-container';
+
+            const questionTitle = document.createElement('div');
+            questionTitle.className = 'question';
+            questionTitle.textContent = q.question;
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            q.options.forEach(option => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.textContent = option;
+                optionsDiv.appendChild(optionDiv);
+            });
+
+            questionDiv.appendChild(questionTitle);
+            questionDiv.appendChild(optionsDiv);
+            container.appendChild(questionDiv);
+        });
+    </script>
 </body>
 </html>
