@@ -1,6 +1,7 @@
 const questionContainer = document.getElementById("question");
 const button = document.getElementById("btn");
 const optionContainer = document.getElementById("options");
+const time = document.getElementById("time");
 
 const questions = [
     {
@@ -61,6 +62,12 @@ const checkAnswer = (selectedOption) => {
     });
 };
 
+const endQuiz = () => {
+   questionContainer.innerText = 'Time\'s up! Quiz Completed!';
+   optionContainer.innerText = " "
+   button.style.display = "none"
+}
+
 button.addEventListener("click", () => {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
@@ -69,7 +76,34 @@ button.addEventListener("click", () => {
         questionContainer.innerText = 'Quiz Completed!';
         optionContainer.innerHTML = '';
         button.style.display = 'none';
+        clearInterval(timeInterval);
     }
 });
 
+let seconds = 60;
+let timeInterval;
+
+const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+const updateTimer = () => {
+    if (seconds > 0) {
+        seconds--
+        time.innerText = formatTime(seconds)
+    }
+    
+    else {
+        clearInterval(timeInterval)
+        endQuiz()
+    }
+}
+
+const startTimer = () => {
+    timeInterval = setInterval(updateTimer, 1000)
+}
+
 showQuestion(currentQuestionIndex);
+startTimer()
