@@ -62,6 +62,23 @@ body {
   animation: fadeIn 1s forwards;
 }
 
+.btn{
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.7rem;
+  width: 5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: #4a90e2;
+  color: #fff;
+  transform: scale(1.05);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
