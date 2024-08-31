@@ -31,7 +31,19 @@ const showQuestion = (index) => {
 
     const question = questions[index];
     questionContainer.innerText = question.question
+
+    const optionContainer = document.getElementById("options");
+    
+    optionContainer.innerHTML = " "
+    question.option.forEach(opt =>{
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "option";
+        optionDiv.innerText = opt;
+        optionContainer.appendChild(optionDiv)
+    })
 }
+
+
 
 showQuestion(currentQuestionIndex);
 
