@@ -22,12 +22,23 @@ const questions = [
 
 ];
 
-const main = document.getElementById("main");
+// const main = document.getElementById("main");
 const questionContainer = document.querySelector(".question")
 
-questions.forEach(que =>{
-    const questionDiv = document.createElement("div");
-    questionDiv.className = "question"
-    questionDiv.innerText = que.question
-    questionContainer.appendChild(questionDiv)
-})
+let currentQuestionIndex = 0;
+
+const showQuestion = (index) => {
+
+    const question = questions[index];
+    questionContainer.innerText = question.question
+}
+
+showQuestion(currentQuestionIndex);
+
+
+// questions.forEach(que =>{
+//     const questionDiv = document.createElement("div");
+//     questionDiv.className = "question"
+//     questionDiv.innerText = que.question
+//     questionContainer.appendChild(questionDiv)
+// });
